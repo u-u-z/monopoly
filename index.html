@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 
 	<script src="jquery1.11.1.min.js"></script>
-	<script type="text/javascript" src="classicedition.js"></script>
+	<script type="text/javascript" src="GensokyoEdition.js"></script>
 	<!-- Comment out the previous line and uncomment the next one to enable the New York City Edition -->
 	<!-- <script type="text/javascript" src="newyorkcityedition.js"></script> -->
 	<script type="text/javascript" src="ai.js"></script>
@@ -255,7 +255,7 @@
 		</div>
 
 		<div id="player1input" class="player-input">
-			Player  1: <input type="text" id="player1name" title="Player name" maxlength="16" value="Player 1" />
+			Player  1: <input type="text" style="display: none;"  id="player1name" title="Player name" maxlength="16" value="Player 1" />
 			<select id="player1color" title="Player color">
 				<option style="color: aqua;" value="ochani_04.png">Cirno(チルノ)</option> <!-- cirno -->
 				<option style="color: black;" value="ochani_02.png">Kirisame Marisa(雾雨魔理沙)</option> <!-- marisa -->
@@ -281,7 +281,7 @@
 		</div>
 
 		<div id="player2input" class="player-input">
-			Player  2: <input type="text" id="player2name" title="Player name" maxlength="16" value="Player 2" />
+			Player  2: <input type="text" style="display: none;"  id="player2name" title="Player name" maxlength="16" value="Player 2" />
 			<select id="player2color" title="Player color">
 				<option style="color: aqua;" value="ochani_04.png">Cirno(チルノ)</option> <!-- cirno -->
 				<option style="color: black;" value="ochani_02.png">Kirisame Marisa(雾雨魔理沙)</option> <!-- marisa -->
@@ -307,7 +307,7 @@
 		</div>
 
 		<div id="player3input" class="player-input">
-			Player  3: <input type="text" id="player3name" title="Player name" maxlength="16" value="Player 3" />
+			Player  3: <input type="text" style="display: none;"  id="player3name" title="Player name" maxlength="16" value="Player 3" />
 			<select id="player3color" title="Player color">
 				<option style="color: aqua;" value="ochani_04.png">Cirno(チルノ)</option> <!-- cirno -->
 				<option style="color: black;" value="ochani_02.png">Kirisame Marisa(雾雨魔理沙)</option> <!-- marisa -->
@@ -333,7 +333,7 @@
 		</div>
 
 		<div id="player4input" class="player-input">
-			Player  4: <input type="text" id="player4name" title="Player name" maxlength="16" value="Player 4" />
+			Player  4: <input type="text" style="display: none;"  id="player4name" title="Player name" maxlength="16" value="Player 4" />
 			<select id="player4color" title="Player color">
 				<option style="color: aqua;" value="ochani_04.png">Cirno(チルノ)</option> <!-- cirno -->
 				<option style="color: black;" value="ochani_02.png">Kirisame Marisa(雾雨魔理沙)</option> <!-- marisa -->
@@ -359,7 +359,7 @@
 		</div>
 
 		<div id="player5input" class="player-input">
-			Player  5: <input type="text" id="player5name" title="Player name" maxlength="16" value="Player 5" />
+			Player  5: <input type="text" style="display: none;"  id="player5name" title="Player name" maxlength="16" value="Player 5" />
 			<select id="player5color" title="Player color">
 				<option style="color: aqua;" value="ochani_04.png">Cirno(チルノ)</option> <!-- cirno -->
 				<option style="color: black;" value="ochani_02.png">Kirisame Marisa(雾雨魔理沙)</option> <!-- marisa -->
@@ -385,7 +385,7 @@
 		</div>
 
 		<div id="player6input" class="player-input">
-			Player  6: <input type="text" id="player6name" title="Player name" maxlength="16" value="Player 6" />
+			Player  6: <input type="text" style="display: none;"  id="player6name" title="Player name" maxlength="16" value="Player 6" />
 			<select id="player6color" title="Player color">
 				<option selected="selected" style="color: aqua;" value="ochani_04.png">Cirno(チルノ)</option> <!-- cirno -->
 				<option style="color: black;" value="ochani_02.png">Kirisame Marisa(雾雨魔理沙)</option> <!-- marisa -->
@@ -411,7 +411,7 @@
 		</div>
 
 		<div id="player7input" class="player-input">
-			Player  7: <input type="text" id="player7name" title="Player name" maxlength="16" value="Player 7" />
+			Player  7: <input type="text" style="display: none;"   id="player7name" title="Player name" maxlength="16" value="Player 7" />
 			<select id="player7color" title="Player color">
 				<option style="color: aqua;" value="ochani_04.png">Cirno(チルノ)</option> <!-- cirno -->
 				<option style="color: black;" value="ochani_02.png">Kirisame Marisa(雾雨魔理沙)</option> <!-- marisa -->
@@ -437,7 +437,7 @@
 		</div>
 
 		<div id="player8input" class="player-input">
-			Player  8: <input type="text" id="player8name" title="Player name" maxlength="16" value="Player 8" />
+			Player  8: <input type="text" style="display: none;" id="player8name" title="Player name" maxlength="16" value="Player 8" />
 			<select id="player8color" title="Player color">
 				<option style="color: aqua;" value="ochani_04.png">Cirno(チルノ)</option> <!-- cirno -->
 				<option style="color: black;" value="ochani_02.png">Kirisame Marisa(雾雨魔理沙)</option> <!-- marisa -->
@@ -466,7 +466,7 @@
 			<input type="button" value="Start Game" onclick="setup();" title="Begin playing." />
 		</div>
 
-		<div id="noF5">注意: 刷新这个页面或从这个页面导航离开会导致游戏结束，状态无法还原。</div>
+		<div id="noF5">Note: Refreshing this page or navigating away from it may end your game without warning.</div>
 	</div>
 
 	<div id="control">
