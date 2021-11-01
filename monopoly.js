@@ -9,17 +9,17 @@ function Game() {
 	var currentbidder = 1;
 	var auctionproperty;
 
-	this.rollDice = function() {
+	this.rollDice = function () {
 		die1 = Math.floor(Math.random() * 6) + 1;
 		die2 = Math.floor(Math.random() * 6) + 1;
 		areDiceRolled = true;
 	};
 
-	this.resetDice = function() {
+	this.resetDice = function () {
 		areDiceRolled = false;
 	};
 
-	this.next = function() {
+	this.next = function () {
 		if (!p.human && p.money < 0) {
 			p.AI.payDebt();
 
@@ -35,7 +35,7 @@ function Game() {
 		}
 	};
 
-	this.getDie = function(die) {
+	this.getDie = function (die) {
 		if (die === 1) {
 
 			return die1;
@@ -52,7 +52,7 @@ function Game() {
 
 
 
-	var finalizeAuction = function() {
+	var finalizeAuction = function () {
 		var p = player[highestbidder];
 		var sq = square[auctionproperty];
 
@@ -74,11 +74,11 @@ function Game() {
 		}
 	};
 
-	this.addPropertyToAuctionQueue = function(propertyIndex) {
+	this.addPropertyToAuctionQueue = function (propertyIndex) {
 		auctionQueue.push(propertyIndex);
 	};
 
-	this.auction = function() {
+	this.auction = function () {
 		if (auctionQueue.length === 0) {
 			return false;
 		}
@@ -159,7 +159,7 @@ function Game() {
 		return true;
 	};
 
-	this.auctionPass = function() {
+	this.auctionPass = function () {
 		if (highestbidder === 0) {
 			highestbidder = currentbidder;
 		}
@@ -208,7 +208,7 @@ function Game() {
 		document.getElementById("bid").style.color = "black";
 	};
 
-	this.auctionBid = function(bid) {
+	this.auctionBid = function (bid) {
 		bid = bid || parseInt(document.getElementById("bid").value, 10);
 
 		if (bid === "" || bid === null) {
@@ -240,7 +240,7 @@ function Game() {
 		}
 	};
 
-	this.auctionExit = function() {
+	this.auctionExit = function () {
 		player[currentbidder].bidding = false;
 		this.auctionPass();
 	};
@@ -299,7 +299,7 @@ function Game() {
 		}
 	};
 
-	var tradeMoneyOnChange = function(e) {
+	var tradeMoneyOnChange = function (e) {
 		$("#proposetradebutton").show();
 		$("#canceltradebutton").show();
 		$("#accepttradebutton").hide();
@@ -332,7 +332,7 @@ function Game() {
 	document.getElementById("trade-leftp-money").onchange = tradeMoneyOnChange;
 	document.getElementById("trade-rightp-money").onchange = tradeMoneyOnChange;
 
-	var resetTrade = function(initiator, recipient, allowRecipientToBeChanged) {
+	var resetTrade = function (initiator, recipient, allowRecipientToBeChanged) {
 		var currentSquare;
 		var currentTableRow;
 		var currentTableCell;
@@ -342,7 +342,7 @@ function Game() {
 		var allGroupUninproved;
 		var currentName;
 
-		var tableRowOnClick = function(e) {
+		var tableRowOnClick = function (e) {
 			var checkboxElement = this.firstChild.firstChild;
 
 			if (checkboxElement !== e.srcElement) {
@@ -419,7 +419,7 @@ function Game() {
 				}
 
 				currentTableCell.propertyIndex = i;
-				currentTableCell.onmouseover = function() {showdeed(this.propertyIndex);};
+				currentTableCell.onmouseover = function () { showdeed(this.propertyIndex); };
 				currentTableCell.onmouseout = hidedeed;
 
 				currentTableCell = currentTableRow.appendChild(document.createElement("td"));
@@ -430,7 +430,7 @@ function Game() {
 				}
 				currentTableCell.textContent = currentSquare.name;
 
-			// Requested properties.
+				// Requested properties.
 			} else if (currentSquare.owner === recipient.index) {
 				currentTableRow = recipientSideTable.appendChild(document.createElement("tr"));
 				currentTableRow.onclick = tableRowOnClick;
@@ -453,7 +453,7 @@ function Game() {
 				}
 
 				currentTableCell.propertyIndex = i;
-				currentTableCell.onmouseover = function() {showdeed(this.propertyIndex);};
+				currentTableCell.onmouseover = function () { showdeed(this.propertyIndex); };
 				currentTableCell.onmouseout = hidedeed;
 
 				currentTableCell = currentTableRow.appendChild(document.createElement("td"));
@@ -588,7 +588,7 @@ function Game() {
 				}
 			}
 
-			nameSelect.onchange = function() {
+			nameSelect.onchange = function () {
 				resetTrade(currentInitiator, player[parseInt(this.value, 10)], true);
 			};
 
@@ -602,7 +602,7 @@ function Game() {
 
 	};
 
-	var readTrade = function() {
+	var readTrade = function () {
 		var initiator = currentInitiator;
 		var recipient = currentRecipient;
 		var property = new Array(40);
@@ -645,7 +645,7 @@ function Game() {
 		return trade;
 	};
 
-	var writeTrade = function(tradeObj) {
+	var writeTrade = function (tradeObj) {
 		resetTrade(tradeObj.getInitiator(), tradeObj.getRecipient(), false);
 
 		for (var i = 0; i < 40; i++) {
@@ -705,7 +705,7 @@ function Game() {
 
 	};
 
-	this.trade = function(tradeObj) {
+	this.trade = function (tradeObj) {
 		$("#board").hide();
 		$("#control").hide();
 		$("#trade").show();
@@ -729,7 +729,7 @@ function Game() {
 	};
 
 
-	this.cancelTrade = function() {
+	this.cancelTrade = function () {
 		$("#board").show();
 		$("#control").show();
 		$("#trade").hide();
@@ -742,7 +742,7 @@ function Game() {
 
 	};
 
-	this.acceptTrade = function(tradeObj) {
+	this.acceptTrade = function (tradeObj) {
 		if (isNaN(document.getElementById("trade-leftp-money").value)) {
 			document.getElementById("trade-leftp-money").value = "This value must be a number.";
 			document.getElementById("trade-leftp-money").style.color = "red";
@@ -862,7 +862,7 @@ function Game() {
 		}
 	};
 
-	this.proposeTrade = function() {
+	this.proposeTrade = function () {
 		if (isNaN(document.getElementById("trade-leftp-money").value)) {
 			document.getElementById("trade-leftp-money").value = "This value must be a number.";
 			document.getElementById("trade-leftp-money").style.color = "red";
@@ -952,7 +952,7 @@ function Game() {
 
 
 
-	this.eliminatePlayer = function() {
+	this.eliminatePlayer = function () {
 		var p = player[turn];
 
 		for (var i = p.index; i < pcount; i++) {
@@ -985,10 +985,10 @@ function Game() {
 			// // Display land counts for survey purposes.
 			// var text;
 			// for (var i = 0; i < 40; i++) {
-				// if (i === 0)
-					// text = square[i].landcount;
-				// else
-					// text += " " + square[i].landcount;
+			// if (i === 0)
+			// text = square[i].landcount;
+			// else
+			// text += " " + square[i].landcount;
 			// }
 			// document.getElementById("refresh").innerHTML += "<br><br><div><textarea type='text' style='width: 980px;' onclick='javascript:select();' />" + text + "</textarea></div>";
 
@@ -999,7 +999,7 @@ function Game() {
 		}
 	};
 
-	this.bankruptcyUnmortgage = function() {
+	this.bankruptcyUnmortgage = function () {
 		var p = player[turn];
 
 		if (p.creditor === 0) {
@@ -1036,11 +1036,11 @@ function Game() {
 		popup(HTML, game.eliminatePlayer);
 	};
 
-	this.resign = function() {
+	this.resign = function () {
 		popup("<p>Are you sure you want to resign?</p>", game.bankruptcy, "Yes/No");
 	};
 
-	this.bankruptcy = function() {
+	this.bankruptcy = function () {
 		var p = player[turn];
 		var pcredit = player[p.creditor];
 		var bankruptcyUnmortgageFee = 0;
@@ -1098,7 +1098,7 @@ function Game() {
 			game.eliminatePlayer();
 		} else {
 			addAlert(pcredit.name + " paid $" + bankruptcyUnmortgageFee + " interest on the mortgaged properties received from " + p.name + ".");
-			popup("<p>" + pcredit.name + ", you must pay $" + bankruptcyUnmortgageFee + " interest on the mortgaged properties you received from " + p.name + ".</p>", function() {player[pcredit.index].pay(bankruptcyUnmortgageFee, 0); game.bankruptcyUnmortgage();});
+			popup("<p>" + pcredit.name + ", you must pay $" + bankruptcyUnmortgageFee + " interest on the mortgaged properties you received from " + p.name + ".</p>", function () { player[pcredit.index].pay(bankruptcyUnmortgageFee, 0); game.bankruptcyUnmortgage(); });
 		}
 	};
 
@@ -1119,6 +1119,7 @@ function Player(name, color) {
 	this.chanceJailCard = false;
 	this.bidding = true;
 	this.human = true;
+	this.realColor = '';
 	// this.AI = null;
 
 	this.pay = function (amount, creditor) {
@@ -1149,27 +1150,27 @@ function Player(name, color) {
 function Trade(initiator, recipient, money, property, communityChestJailCard, chanceJailCard) {
 	// For each property and get out of jail free cards, 1 means offered, -1 means requested, 0 means neither.
 
-	this.getInitiator = function() {
+	this.getInitiator = function () {
 		return initiator;
 	};
 
-	this.getRecipient = function() {
+	this.getRecipient = function () {
 		return recipient;
 	};
 
-	this.getProperty = function(index) {
+	this.getProperty = function (index) {
 		return property[index];
 	};
 
-	this.getMoney = function() {
+	this.getMoney = function () {
 		return money;
 	};
 
-	this.getCommunityChestJailCard = function() {
+	this.getCommunityChestJailCard = function () {
 		return communityChestJailCard;
 	};
 
-	this.getChanceJailCard = function() {
+	this.getChanceJailCard = function () {
 		return chanceJailCard;
 	};
 }
@@ -1178,7 +1179,7 @@ var player = [];
 var pcount;
 var turn = 0, doublecount = 0;
 // Overwrite an array with numbers from one to the array's length in a random order.
-Array.prototype.randomize = function(length) {
+Array.prototype.randomize = function (length) {
 	length = (length || this.length);
 	var num;
 	var indexArray = [];
@@ -1197,25 +1198,25 @@ Array.prototype.randomize = function(length) {
 };
 
 // function show(element) {
-	// // Element may be an HTML element or the id of one passed as a string.
-	// if (element.constructor == String) {
-		// element = document.getElementById(element);
-	// }
+// // Element may be an HTML element or the id of one passed as a string.
+// if (element.constructor == String) {
+// element = document.getElementById(element);
+// }
 
-	// if (element.tagName == "INPUT" || element.tagName == "SPAN" || element.tagName == "LABEL") {
-		// element.style.display = "inline";
-	// } else {
-		// element.style.display = "block";
-	// }
+// if (element.tagName == "INPUT" || element.tagName == "SPAN" || element.tagName == "LABEL") {
+// element.style.display = "inline";
+// } else {
+// element.style.display = "block";
+// }
 // }
 
 // function hide(element) {
-	// // Element may be an HTML element or the id of one passed as a string.
-	// if (element.constructor == String) {
-		// document.getElementById(element).style.display = "none";
-	// } else {
-		// element.style.display = "none";
-	// }
+// // Element may be an HTML element or the id of one passed as a string.
+// if (element.constructor == String) {
+// document.getElementById(element).style.display = "none";
+// } else {
+// element.style.display = "none";
+// }
 // }
 
 function addAlert(alertText) {
@@ -1224,7 +1225,7 @@ function addAlert(alertText) {
 	$(document.createElement("div")).text(alertText).appendTo($alert);
 
 	// Animate scrolling down alert element.
-	$alert.stop().animate({"scrollTop": $alert.prop("scrollHeight")}, 1000);
+	$alert.stop().animate({ "scrollTop": $alert.prop("scrollHeight") }, 1000);
 
 	if (!player[turn].human) {
 		player[turn].AI.alertList += "<div>" + alertText + "</div>";
@@ -1251,19 +1252,19 @@ function popup(HTML, action, option) {
 	if (option === "yes/no") {
 		document.getElementById("popuptext").innerHTML += "<div><input type=\"button\" value=\"Yes\" id=\"popupyes\" /><input type=\"button\" value=\"No\" id=\"popupno\" /></div>";
 
-		$("#popupyes, #popupno").on("click", function() {
+		$("#popupyes, #popupno").on("click", function () {
 			$("#popupwrap").hide();
 			$("#popupbackground").fadeOut(400);
 		});
 
 		$("#popupyes").on("click", action);
 
-	// Ok
+		// Ok
 	} else if (option !== "blank") {
 		$("#popuptext").append("<div><input type='button' value='OK' id='popupclose' /></div>");
 		$("#popupclose").focus();
 
-		$("#popupclose").on("click", function() {
+		$("#popupclose").on("click", function () {
 			$("#popupwrap").hide();
 			$("#popupbackground").fadeOut(400);
 		}).on("click", action);
@@ -1271,7 +1272,7 @@ function popup(HTML, action, option) {
 	}
 
 	// Show using animation.
-	$("#popupbackground").fadeIn(400, function() {
+	$("#popupbackground").fadeIn(400, function () {
 		$("#popupwrap").show();
 	});
 
@@ -1442,10 +1443,10 @@ function updateOwned() {
 	$("#owned").show();
 
 	var HTML = "",
-	firstproperty = -1;
+		firstproperty = -1;
 
 	var mortgagetext = "",
-	housetext = "";
+		housetext = "";
 	var sq;
 
 	for (var i = 0; i < 40; i++) {
@@ -1456,7 +1457,7 @@ function updateOwned() {
 			var currentCellOwner = document.getElementById("cell" + i + "owner");
 
 			currentCellOwner.style.display = "block";
-			currentCellOwner.style.backgroundColor = player[sq.owner].color;
+			currentCellOwner.style.backgroundColor = player[sq.owner].realColor;
 			currentCellOwner.title = player[sq.owner].name;
 		}
 	}
@@ -1525,16 +1526,16 @@ function updateOwned() {
 	} else if (firstproperty > -1) {
 		document.getElementById("propertycheckbox" + firstproperty).checked = true;
 	}
-	$(".property-cell-row").click(function() {
+	$(".property-cell-row").click(function () {
 		var row = this;
 
 		// Toggle check the current checkbox.
-		$(this).find(".propertycellcheckbox > input").prop("checked", function(index, val) {
+		$(this).find(".propertycellcheckbox > input").prop("checked", function (index, val) {
 			return !val;
 		});
 
 		// Set all other checkboxes to false.
-		$(".propertycellcheckbox > input").prop("checked", function(index, val) {
+		$(".propertycellcheckbox > input").prop("checked", function (index, val) {
 			if (!$.contains(row, this)) {
 				return false;
 			}
@@ -1715,7 +1716,7 @@ function chanceCommunityChest() {
 			communityChestCards.deck.splice(communityChestCards.index, 1);
 		}
 
-		popup("<img src='images/community_chest_icon.png' style='height: 50px; width: 53px; float: left; margin: 8px 8px 8px 0px;' /><div style='font-weight: bold; font-size: 16px; '>Community Chest:</div><div style='text-align: justify;'>" + communityChestCards[communityChestIndex].text + "</div>", function() {
+		popup("<img src='images/community_chest_icon.png' style='height: 50px; width: 53px; float: left; margin: 8px 8px 8px 0px;' /><div style='font-weight: bold; font-size: 16px; '>Community Chest:</div><div style='text-align: justify;'>" + communityChestCards[communityChestIndex].text + "</div>", function () {
 			communityChestAction(communityChestIndex);
 		});
 
@@ -1725,7 +1726,7 @@ function chanceCommunityChest() {
 			communityChestCards.index = 0;
 		}
 
-	// Chance
+		// Chance
 	} else if (p.position === 7 || p.position === 22 || p.position === 36) {
 		var chanceIndex = chanceCards.deck[chanceCards.index];
 
@@ -1734,7 +1735,7 @@ function chanceCommunityChest() {
 			chanceCards.deck.splice(chanceCards.index, 1);
 		}
 
-		popup("<img src='images/chance_icon.png' style='height: 50px; width: 26px; float: left; margin: 8px 8px 8px 0px;' /><div style='font-weight: bold; font-size: 16px; '>Chance:</div><div style='text-align: justify;'>" + chanceCards[chanceIndex].text + "</div>", function() {
+		popup("<img src='images/chance_icon.png' style='height: 50px; width: 26px; float: left; margin: 8px 8px 8px 0px;' /><div style='font-weight: bold; font-size: 16px; '>Chance:</div><div style='text-align: justify;'>" + chanceCards[chanceIndex].text + "</div>", function () {
 			chanceAction(chanceIndex);
 		});
 
@@ -2087,7 +2088,7 @@ function sellHouse(index) {
 function showStats() {
 	var HTML, sq, p;
 	var mortgagetext,
-	housetext;
+		housetext;
 	var write;
 	HTML = "<table align='center'><tr>";
 
@@ -2104,7 +2105,7 @@ function showStats() {
 
 			if (sq.owner == x) {
 				mortgagetext = "",
-				housetext = "";
+					housetext = "";
 
 				if (sq.mortgage) {
 					mortgagetext = "title='Mortgaged' style='color: grey;'";
@@ -2160,7 +2161,7 @@ function showStats() {
 
 	document.getElementById("statstext").innerHTML = HTML;
 	// Show using animation.
-	$("#statsbackground").fadeIn(400, function() {
+	$("#statsbackground").fadeIn(400, function () {
 		$("#statswrap").show();
 	});
 }
@@ -2446,7 +2447,7 @@ function roll() {
 			document.getElementById("nextbutton").value = "Roll again";
 			document.getElementById("nextbutton").title = "You threw doubles. Roll again.";
 
-		// If player rolls doubles three times in a row, send him to jail
+			// If player rolls doubles three times in a row, send him to jail
 		} else if (doublecount === 3) {
 			p.jail = true;
 			doublecount = 0;
@@ -2493,9 +2494,9 @@ function roll() {
 			if (p.jailroll === 3) {
 
 				if (p.human) {
-					popup("<p>You must pay the $50 fine.</p>", function() {
+					popup("<p>You must pay the $50 fine.</p>", function () {
 						payfifty();
-						player[turn].position=10 + die1 + die2;
+						player[turn].position = 10 + die1 + die2;
 						land();
 					});
 				} else {
@@ -2618,11 +2619,20 @@ function setup() {
 	for (var i = 1; i <= pcount; i++) {
 		p = player[playerArray[i - 1]];
 
+		let imgName = document.getElementById("player" + i + "color").value.toLowerCase();
+		let cssContent = `;background-image: url(/images/touhou/${imgName});background-position:center;background-size:auto;`
+		const selectObject = document.getElementById("player" + i + "color")
+		p.color = cssContent;
+		p.realColor = selectObject.options[selectObject.selectedIndex].style.color;
 
-		p.color = document.getElementById("player" + i + "color").value.toLowerCase();
 
 		if (document.getElementById("player" + i + "ai").value === "0") {
-			p.name = document.getElementById("player" + i + "name").value;
+			//p.name = document.getElementById("player" + i + "name").value;
+
+
+
+			p.name = selectObject.options[selectObject.selectedIndex].text;
+
 			p.human = true;
 		} else if (document.getElementById("player" + i + "ai").value === "1") {
 			p.human = false;
@@ -2646,16 +2656,16 @@ function setup() {
 }
 
 // function togglecheck(elementid) {
-	// element = document.getElementById(elementid);
+// element = document.getElementById(elementid);
 
-	// if (window.event.srcElement.id == elementid)
-		// return;
+// if (window.event.srcElement.id == elementid)
+// return;
 
-	// if (element.checked) {
-		// element.checked = false;
-	// } else {
-		// element.checked = true;
-	// }
+// if (element.checked) {
+// element.checked = false;
+// } else {
+// element.checked = true;
+// }
 // }
 
 function getCheckedProperty() {
@@ -2668,18 +2678,18 @@ function getCheckedProperty() {
 }
 
 // function propertycell_onclick(element, num) {
-	// togglecheck("propertycheckbox" + num);
-	// if (document.getElementById("propertycheckbox" + num).checked) {
+// togglecheck("propertycheckbox" + num);
+// if (document.getElementById("propertycheckbox" + num).checked) {
 
-		// // Uncheck all other boxes.
-		// for (var i = 0; i < 40; i++) {
-			// if (i !== num && document.getElementById("propertycheckbox" + i)) {
-				// document.getElementById("propertycheckbox" + i).checked = false;
-			// }
-		// }
-	// }
+// // Uncheck all other boxes.
+// for (var i = 0; i < 40; i++) {
+// if (i !== num && document.getElementById("propertycheckbox" + i)) {
+// document.getElementById("propertycheckbox" + i).checked = false;
+// }
+// }
+// }
 
-	// updateOption();
+// updateOption();
 // }
 
 function playernumber_onchange() {
@@ -2702,7 +2712,7 @@ function menuitem_onmouseout(element) {
 	return;
 }
 
-window.onload = function() {
+window.onload = function () {
 	game = new Game();
 
 	for (var i = 0; i <= 8; i++) {
@@ -2752,8 +2762,8 @@ window.onload = function() {
 	}
 
 	// Shuffle Chance and Community Chest decks.
-	chanceCards.deck.sort(function() {return Math.random() - 0.5;});
-	communityChestCards.deck.sort(function() {return Math.random() - 0.5;});
+	chanceCards.deck.sort(function () { return Math.random() - 0.5; });
+	communityChestCards.deck.sort(function () { return Math.random() - 0.5; });
 
 	$("#playernumber").on("change", playernumber_onchange);
 	playernumber_onchange();
@@ -2821,7 +2831,7 @@ window.onload = function() {
 	corrections();
 
 	// Jail corrections
-	$("<div>", {id: "jailpositionholder" }).appendTo("#jail");
+	$("<div>", { id: "jailpositionholder" }).appendTo("#jail");
 	$("<span>").text("Jail").appendTo("#jail");
 
 	document.getElementById("jail").enlargeId = "enlarge40";
@@ -2834,13 +2844,13 @@ window.onload = function() {
 
 	var drag, dragX, dragY, dragObj, dragTop, dragLeft;
 
-	$(".cell-position-holder, #jail").on("mouseover", function(){
+	$(".cell-position-holder, #jail").on("mouseover", function () {
 		$("#" + this.enlargeId).show();
 
-	}).on("mouseout", function() {
+	}).on("mouseout", function () {
 		$("#" + this.enlargeId).hide();
 
-	}).on("mousemove", function(e) {
+	}).on("mousemove", function (e) {
 		var element = document.getElementById(this.enlargeId);
 
 		if (e.clientY + 20 > window.innerHeight - 204) {
@@ -2853,7 +2863,7 @@ window.onload = function() {
 	});
 
 
-	$("body").on("mousemove", function(e) {
+	$("body").on("mousemove", function (e) {
 		var object;
 
 		if (e.target) {
@@ -2885,11 +2895,11 @@ window.onload = function() {
 	});
 
 
-	$("body").on("mouseup", function() {
+	$("body").on("mouseup", function () {
 
 		drag = false;
 	});
-	document.getElementById("statsdrag").onmousedown = function(e) {
+	document.getElementById("statsdrag").onmousedown = function (e) {
 		dragObj = document.getElementById("stats");
 		dragObj.style.position = "relative";
 
@@ -2907,7 +2917,7 @@ window.onload = function() {
 		drag = true;
 	};
 
-	document.getElementById("popupdrag").onmousedown = function(e) {
+	document.getElementById("popupdrag").onmousedown = function (e) {
 		dragObj = document.getElementById("popup");
 		dragObj.style.position = "relative";
 
@@ -2925,7 +2935,7 @@ window.onload = function() {
 		drag = true;
 	};
 
-	$("#mortgagebutton").click(function() {
+	$("#mortgagebutton").click(function () {
 		var checkedProperty = getCheckedProperty();
 		var s = square[checkedProperty];
 
@@ -2934,19 +2944,19 @@ window.onload = function() {
 				popup("<p>You need $" + (Math.round(s.price * 0.55) - player[s.owner].money) + " more to unmortgage " + s.name + ".</p>");
 
 			} else {
-				popup("<p>" + player[s.owner].name + ", are you sure you want to unmortgage " + s.name + " for $" + Math.round(s.price * 0.55) + "?</p>", function() {
+				popup("<p>" + player[s.owner].name + ", are you sure you want to unmortgage " + s.name + " for $" + Math.round(s.price * 0.55) + "?</p>", function () {
 					unmortgage(checkedProperty);
 				}, "Yes/No");
 			}
 		} else {
-			popup("<p>" + player[s.owner].name + ", are you sure you want to mortgage " + s.name + " for $" + Math.round(s.price * 0.5) + "?</p>", function() {
+			popup("<p>" + player[s.owner].name + ", are you sure you want to mortgage " + s.name + " for $" + Math.round(s.price * 0.5) + "?</p>", function () {
 				mortgage(checkedProperty);
 			}, "Yes/No");
 		}
 
 	});
 
-	$("#buyhousebutton").on("click", function() {
+	$("#buyhousebutton").on("click", function () {
 		var checkedProperty = getCheckedProperty();
 		var s = square[checkedProperty];
 		var p = player[s.owner];
@@ -2983,15 +2993,15 @@ window.onload = function() {
 
 	});
 
-	$("#sellhousebutton").click(function() { sellHouse(getCheckedProperty()); });
+	$("#sellhousebutton").click(function () { sellHouse(getCheckedProperty()); });
 
 	$("#viewstats").on("click", showStats);
-	$("#statsclose, #statsbackground").on("click", function() {
+	$("#statsclose, #statsbackground").on("click", function () {
 		$("#statswrap").hide();
 		$("#statsbackground").fadeOut(400);
 	});
 
-	$("#buy-menu-item").click(function() {
+	$("#buy-menu-item").click(function () {
 		$("#buy").show();
 		$("#manage").hide();
 
@@ -3000,7 +3010,7 @@ window.onload = function() {
 	});
 
 
-	$("#manage-menu-item").click(function() {
+	$("#manage-menu-item").click(function () {
 		$("#manage").show();
 		$("#buy").hide();
 	});
