@@ -1351,9 +1351,9 @@ function updatePosition() {
 	p = player[turn];
 
 	if (p.jail) {
-		document.getElementById("jail").style.border = "1px solid " + p.color;
+		document.getElementById("jail").style.border = "1px solid " + p.realColor;
 	} else {
-		document.getElementById("cell" + p.position).style.border = "1px solid " + p.color;
+		document.getElementById("cell" + p.position).style.border = "1px solid " + p.realColor;
 	}
 
 	// for (var i=1; i <= pcount; i++) {
@@ -1371,7 +1371,7 @@ function updateMoney() {
 		p_i = player[i];
 
 		$("#moneybarrow" + i).show();
-		document.getElementById("p" + i + "moneybar").style.border = "2px solid " + p_i.color;
+		document.getElementById("p" + i + "moneybar").style.border = "2px solid " + p_i.realColor;
 		document.getElementById("p" + i + "money").innerHTML = p_i.money;
 		document.getElementById("p" + i + "moneyname").innerHTML = p_i.name;
 	}
@@ -1380,7 +1380,7 @@ function updateMoney() {
 		$("#landed").hide();
 	}
 
-	document.getElementById("quickstats").style.borderColor = p.color;
+	document.getElementById("quickstats").style.borderColor = p.realColor;
 
 	if (p.money < 0) {
 		// document.getElementById("nextbutton").disabled = true;
