@@ -108,7 +108,7 @@ td {
 
 #landed {
 	padding: 3px;
-	border: 1px solid gray;
+	border: 2px solid gray;
 	border-top: none;
 	width: 302px;
 	margin: 0px;
@@ -120,7 +120,7 @@ td {
 	height: 92px;
 	margin: 0px;
 	padding-left: 1px;
-	border: 1px solid gray;
+	border: 2px solid gray;
 	font-family: Consolas, "Courier New", monospace;
 	font-size: 13px;
 	background-color: #FFFFFF;
@@ -129,12 +129,12 @@ td {
 
 #manage {
 	width: 308px;
-	border: 1px solid gray;
+	border: 2px solid gray;
 	display: none;
 }
 
 #option {
-	border-bottom: 1px solid gray;
+	border-bottom: 2px solid gray;
 	background-color: white;
 	display: none;
 	background: white;
@@ -247,7 +247,7 @@ td {
 	color: white;
 	font-weight: bold;
 	font-size: 16px;
-	border: 1px solid blue;
+	border: 2px solid blue;
 	border-radius: 5px 5px 0px 0px;
 	height: 30px;
 	width: 99%;
@@ -451,7 +451,7 @@ td {
 #deed-header {
 	width: 215px;
 	height: 48px;
-	border: 1px solid black;
+	border: 2px solid black;
 	margin: 9px;
 	background-color: yellow;
 	text-align: center;
@@ -690,7 +690,7 @@ td {
 .propertycelldeed {
 	width: 18px;
 	height: 20px;
-	border: 1px solid grey;
+	border: 2px solid grey;
 	cursor: pointer;
 	display: none;
 }

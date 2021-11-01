@@ -1018,9 +1018,9 @@ function Game() {
 				HTML += "<tr><td class='propertycellcolor' style='background: " + sq.color + ";";
 
 				if (sq.groupNumber == 1 || sq.groupNumber == 2) {
-					HTML += " border: 1px solid grey;";
+					HTML += " border: 2px solid grey;";
 				} else {
-					HTML += " border: 1px solid " + sq.color + ";";
+					HTML += " border: 2px solid " + sq.color + ";";
 				}
 
 				// Player already paid interest, so they can unmortgage for the mortgage price.
@@ -1281,10 +1281,10 @@ function popup(HTML, action, option) {
 
 function updatePosition() {
 	// Reset borders
-	document.getElementById("jail").style.border = "1px solid black";
+	document.getElementById("jail").style.border = "2px solid black";
 	document.getElementById("jailpositionholder").innerHTML = "";
 	for (var i = 0; i < 40; i++) {
-		document.getElementById("cell" + i).style.border = "1px solid black";
+		document.getElementById("cell" + i).style.border = "2px solid black";
 		document.getElementById("cell" + i + "positionholder").innerHTML = "";
 
 	}
@@ -1351,9 +1351,9 @@ function updatePosition() {
 	p = player[turn];
 
 	if (p.jail) {
-		document.getElementById("jail").style.border = "1px solid " + p.realColor;
+		document.getElementById("jail").style.border = "2px solid " + p.realColor;
 	} else {
-		document.getElementById("cell" + p.position).style.border = "1px solid " + p.realColor;
+		document.getElementById("cell" + p.position).style.border = "2px solid " + p.realColor;
 	}
 
 	// for (var i=1; i <= pcount; i++) {
@@ -1488,7 +1488,7 @@ function updateOwned() {
 			HTML += "<tr class='property-cell-row'><td class='propertycellcheckbox'><input type='checkbox' id='propertycheckbox" + i + "' /></td><td class='propertycellcolor' style='background: " + sq.color + ";";
 
 			if (sq.groupNumber == 1 || sq.groupNumber == 2) {
-				HTML += " border: 1px solid grey; width: 18px;";
+				HTML += " border: 2px solid grey; width: 18px;";
 			}
 
 			HTML += "' onmouseover='showdeed(" + i + ");' onmouseout='hidedeed();'></td><td class='propertycellname' " + mortgagetext + ">" + sq.name + housetext + "</td></tr>";
@@ -1959,7 +1959,7 @@ function streetrepairs(houseprice, hotelprice) {
 function payfifty() {
 	var p = player[turn];
 
-	document.getElementById("jail").style.border = '1px solid black';
+	document.getElementById("jail").style.border = '2px solid black';
 	document.getElementById("cell11").style.border = '2px solid ' + p.color;
 
 	$("#landed").hide();
@@ -1978,7 +1978,7 @@ function payfifty() {
 function useJailCard() {
 	var p = player[turn];
 
-	document.getElementById("jail").style.border = '1px solid black';
+	document.getElementById("jail").style.border = '2px solid black';
 	document.getElementById("cell11").style.border = '2px solid ' + p.color;
 
 	$("#landed").hide();
@@ -2125,7 +2125,7 @@ function showStats() {
 				HTML += "<tr><td class='statscellcolor' style='background: " + sq.color + ";";
 
 				if (sq.groupNumber == 1 || sq.groupNumber == 2) {
-					HTML += " border: 1px solid grey;";
+					HTML += " border: 2px solid grey;";
 				}
 
 				HTML += "' onmouseover='showdeed(" + i + ");' onmouseout='hidedeed();'></td><td class='statscellname' " + mortgagetext + ">" + sq.name + housetext + "</td></tr>";
@@ -2478,7 +2478,7 @@ function roll() {
 
 		updateDice(die1, die2);
 		if (die1 == die2) {
-			document.getElementById("jail").style.border = "1px solid black";
+			document.getElementById("jail").style.border = "2px solid black";
 			document.getElementById("cell11").style.border = "2px solid " + p.color;
 			$("#landed").hide();
 
