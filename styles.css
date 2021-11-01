@@ -588,27 +588,27 @@ td {
 }
 
 .board-corner {
-	width: 102px;
-	height: 102px;
+	width: 80px;
+	height: 80px;
 }
 
 .board-top {
 	width: 72px;
-	height: 102px;
+	height: 80px;
 }
 
 .board-bottom {
 	width: 72px;
-	height: 102px;
+	height: 80px;
 }
 
 .board-left {
-	width: 102px;
+	width: 80px;
 	height: 72px;
 }
 
 .board-right {
-	width: 102px;
+	width: 80px;
 	height: 72px;
 }
 
