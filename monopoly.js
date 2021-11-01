@@ -2636,7 +2636,7 @@ function setup() {
 			p.human = true;
 		} else if (document.getElementById("player" + i + "ai").value === "1") {
 			p.human = false;
-			p.AI = new AITest(p);
+			p.AI = new AITest(p,selectObject.options[selectObject.selectedIndex].text);
 		}
 	}
 
