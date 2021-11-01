@@ -759,8 +759,8 @@ td {
 }
 
 .cell-position {
-	height: 12px;
-	width: 12px;
+	height: 30px;
+	width: 30px;
 	position: absolute;
 	top: 0px;
 	left: 0px;
