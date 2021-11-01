@@ -4,7 +4,7 @@
 	<title>Monopoly</title>
 	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="jquery1.11.1.min.js"></script>
 	<script type="text/javascript" src="classicedition.js"></script>
 	<!-- Comment out the previous line and uncomment the next one to enable the New York City Edition -->
 	<!-- <script type="text/javascript" src="newyorkcityedition.js"></script> -->
@@ -257,22 +257,22 @@
 		<div id="player1input" class="player-input">
 			玩家 1: <input type="text" id="player1name" title="Player name" maxlength="16" value="Player 1" />
 			<select id="player1color" title="Player color">
-				<option style="color: aqua;">Aqua</option>
-				<option style="color: black;">Black</option>
-				<option style="color: blue;">Blue</option>
-				<option style="color: fuchsia;">Fuchsia</option>
-				<option style="color: gray;">Gray</option>
-				<option style="color: green;">Green</option>
-				<option style="color: lime;">Lime</option>
-				<option style="color: maroon;">Maroon</option>
-				<option style="color: navy;">Navy</option>
-				<option style="color: olive;">Olive</option>
-				<option style="color: orange;">Orange</option>
-				<option style="color: purple;">Purple</option>
-				<option style="color: red;">Red</option>
-				<option style="color: silver;">Silver</option>
-				<option style="color: teal;">Teal</option>
-				<option selected="selected" style="color: yellow;">Yellow</option>
+				<option style="color: aqua; background-image: url('');">琪露诺</option> <!-- cirno -->
+				<option style="color: black;">魔理沙</option> <!-- marisa -->
+				<option style="color: blue;">十六夜·咲夜</option> <!-- sakuya -->
+				<option style="color: fuchsia;">帕秋莉·诺蕾姬</option> <!--patchouli-->
+				<option style="color: gray;">小恶魔</option> <!-- koakuma -->
+				<option style="color: green;">红美铃</option><!-- Meirin 红美铃-->
+				<option style="color: lime;">东风谷·早苗</option><!--sanae 早苗-->
+				<option style="color: maroon;">蕾米莉亚·斯卡雷特</option><!--remilia-->
+				<option style="color: navy;">爱丽丝·玛格特洛依德</option><!--Alice-->
+				<option style="color: olive;">八云·蓝</option><!--Yakumo Ran-->
+				<option style="color: orange;">伊吹翠香</option><!--Suika-->
+				<option style="color: purple;">幽幽子</option><!--uuz-->
+				<option style="color: red;" value="ochani_01.png">博丽灵梦</option><!--Reimu-->
+				<option style="color: silver;">蕾蒂·霍瓦特洛克</option><!--Letty Whiterock-->
+				<option style="color: teal;">魂魄妖梦</option><!--Youmu-->
+				<option selected="selected" style="color: yellow;">芙兰朵路·斯卡雷特</option><!--Flandre-->
 			</select>
 			<select id="player1ai" title="Choose whether this player is controled by a human or by the computer." onclick="document.getElementById('player1name').disabled = this.value !== '0';">
 				<option value="0" selected="selected">Human</option>
